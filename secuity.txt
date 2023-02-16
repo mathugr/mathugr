@@ -1,0 +1,18 @@
+Here are some YouTube videos that can help you learn network security:
+
+Network Security Fundamentals - Cisco Networking Academy: This video series covers the basics of network security, including topics such as confidentiality, integrity, and availability, and common network security threats.
+Link: https://www.youtube.com/watch?v=8WY7g0vYSnM&list=PLm_cJvhMf_SymgPWoa-WX7aH6UTQ1TgTz
+
+Introduction to Network Security - CompTIA Network+ Training: This video provides an introduction to network security and covers topics such as firewalls, IDS/IPS, and VPNs.
+Link: https://www.youtube.com/watch?v=0JFWf04gTlQ
+
+Cybersecurity Essentials - Cisco Networking Academy: This video series covers the fundamentals of cybersecurity, including topics such as cryptography, secure network design, and security policies.
+Link: https://www.youtube.com/watch?v=5AxWTc8fJNw&list=PLlRFEj9H3Oj5hUEWmZMliw7wcm1QJ_fAI
+
+Network Security - Professor Messer: This video series covers the basics of network security, including topics such as secure network design, firewalls, and VPNs.
+Link: https://www.youtube.com/watch?v=0vV7q3xq5Bw&list=PLG49S3nxzAnmpdmX7RoTOyuNJQAb-r-gd
+
+CompTIA Security+ (SY0-501) Training Course - ITProTV: This video series covers the CompTIA Security+ certification exam, including topics such as cryptography, network security, and threat management.
+Link: https://www.youtube.com/watch?v=1uvLJzQIcBk&list=PLURKNLPDfXLpddN1hd4v4CRsz-8f--GJp
+
+These YouTube videos can serve as a great starting point to learn network security concepts and principles.

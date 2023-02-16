@@ -1,0 +1,20 @@
+Week 1:
+
+AWS Fundamentals: Introduction to AWS | AWS: https://www.youtube.com/watch?v=ulprqHHWlng
+AWS Global Infrastructure | AWS: https://www.youtube.com/watch?v=TUEMyOZoLwA
+AWS Certified Solutions Architect Associate Training - Introduction | Simplilearn: https://www.youtube.com/watch?v=Ia-UEYYR44s
+Week 2:
+
+AWS Compute Services: Introduction | AWS: https://www.youtube.com/watch?v=1fmytY-6gxw
+AWS Storage Services: Introduction | AWS: https://www.youtube.com/watch?v=X5K7V5L_pQw
+AWS Database Services: Introduction | AWS: https://www.youtube.com/watch?v=9YnbCJAKQ00
+Week 3:
+
+AWS Networking Services: Introduction | AWS: https://www.youtube.com/watch?v=jR9hN_TPKaM
+AWS Security Services: Introduction | AWS: https://www.youtube.com/watch?v=sLW8v5kwx9g
+AWS Certified Solutions Architect Associate Training - Networking | Simplilearn: https://www.youtube.com/watch?v=YCxM0oSnQGo
+Week 4:
+
+AWS Management & Governance Services: Introduction | AWS: https://www.youtube.com/watch?v=yq3z4H_NGKY
+AWS Application Integration Services: Introduction | AWS: https://www.youtube.com/watch?v=0l-zQIyWXcM
+AWS Certified Solutions Architect Associate Training - Monitoring | Simplilearn: https://www.youtube.com/watch?v=O6h0e6We-Rc

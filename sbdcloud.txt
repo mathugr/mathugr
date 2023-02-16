@@ -1,0 +1,48 @@
+ere are some potential secure by design cloud security questions with multiple-choice answers:
+
+What security measures are implemented in your cloud infrastructure?
+a. Encryption of data at rest and in transit
+b. Network segmentation and access controls
+c. Security monitoring and logging
+d. All of the above
+
+What level of access controls do you have in place for your cloud infrastructure and application?
+a. Role-based access controls (RBAC)
+b. Multi-factor authentication (MFA)
+c. Identity and access management (IAM) policies
+d. All of the above
+
+How do you ensure the security of data at rest and in transit?
+a. Encryption of data at rest and in transit
+b. Use of secure protocols, such as TLS or SSL
+c. Regular vulnerability scanning and penetration testing
+d. All of the above
+
+What security-related training or awareness programs do you provide for your employees?
+a. Regular security awareness training
+b. Phishing and social engineering testing
+c. Secure coding training
+d. All of the above
+
+How do you handle security incidents or data breaches, including incident response planning and notification processes?
+a. Incident response plan in place
+b. Regular testing of the incident response plan
+c. Clear communication plan in case of a security incident
+d. All of the above
+
+How do you ensure compliance with applicable laws and regulations, such as GDPR or HIPAA?
+a. Regular compliance audits and assessments
+b. Implementing appropriate security controls and policies
+c. Providing data protection and privacy features
+d. All of the above
+
+
+
+-------
+The Center for Internet Security (CIS) has a Cloud Controls Matrix (CCM) that provides a list of security controls and best practices for cloud environments. You can use this as a reference to develop your own list of secure by design cloud security questions. Here is the link: https://www.cisecurity.org/controls/cloud-controls-matrix/
+
+The Cloud Security Alliance (CSA) has published a list of top cloud security threats and best practices for addressing them. You can use this as a reference to develop your own list of questions. Here is the link: https://cloudsecurityalliance.org/top-threats/
+
+The National Institute of Standards and Technology (NIST) has published a set of guidelines for securing cloud environments. You can use this as a reference to develop your own list of questions. Here is the link: https://www.nist.gov/publications/cloud-computing-synopsis-and-recommendations
+
+By using these resources and others like them, you can create a set of secure by design cloud security questions that are tailored to your specific needs and requirements.
