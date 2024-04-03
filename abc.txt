@@ -1,3 +1,39 @@
+# Define variables
+$folderPath = "\\server\sharedFolder"  # Replace with the path to your shared folder
+$userOrGroupName = "DOMAIN\Username"   # Replace with the user or group you want to grant access to
+$permissions = "Modify"                # Replace with the desired permissions (e.g., Read, Write, Modify, FullControl)
+
+# Check if the folder exists
+if (Test-Path $folderPath) {
+    # Get the ACL of the folder
+    $acl = Get-Acl $folderPath
+
+    # Create a new rule for the user or group
+    $permission = New-Object System.Security.AccessControl.FileSystemAccessRule($userOrGroupName, $permissions, "Allow")
+
+    # Add the permission to the ACL
+    $acl.SetAccessRule($permission)
+
+    # Set the ACL back to the folder
+    Set-Acl $folderPath $acl
+
+    Write-Host "Access granted to $userOrGroupName for $permissions in $folderPath"
+} else {
+    Write-Host "Folder does not exist: $folderPath"
+}
+Instructions for using the script:
+
+Replace \\server\sharedFolder with the actual path to your shared folder.
+Replace DOMAIN\Username with the user or group you want to grant access to. You can use the format DOMAIN\Username for individual users or DOMAIN\GroupName for groups.
+Replace "Modify" with the desired permissions. You can use values like "Read", "Write", "Modify", or "FullControl".
+Save this script with a .ps1 extension (e.g., Grant-Access.ps1) and then run it using PowerShell. It will grant the specified user or group the desired permissions for the shared folder. Make sure to run this script with appropriate administrative privileges if needed.
+
+
+
+
+
+
+
 Can you share a specific project where you successfully designed and implemented a data architecture to meet business objectives?
 
 How do you approach balancing the need for data accessibility with ensuring data security and privacy?
