@@ -1,4 +1,40 @@
 # Define variables
+$filePath = "\\server\sharedFolder\example.txt"  # Replace with the path to your file
+$userOrGroupName = "DOMAIN\Username"             # Replace with the user or group you want to grant access to
+$permissions = "Modify"                          # Replace with the desired permissions (e.g., Read, Write, Modify, FullControl)
+
+# Check if the file exists
+if (Test-Path $filePath) {
+    # Get the ACL of the file
+    $acl = Get-Acl $filePath
+
+    # Create a new rule for the user or group
+    $permission = New-Object System.Security.AccessControl.FileSystemAccessRule($userOrGroupName, $permissions, "Allow")
+
+    # Add the permission to the ACL
+    $acl.SetAccessRule($permission)
+
+    # Set the ACL back to the file
+    Set-Acl $filePath $acl
+
+    Write-Host "Access granted to $userOrGroupName for $permissions in $filePath"
+} else {
+    Write-Host "File does not exist: $filePath"
+}
+Instructions for using the script:
+
+Replace \\server\sharedFolder\example.txt with the actual path to your file.
+Replace DOMAIN\Username with the user or group you want to grant access to.
+Replace "Modify" with the desired permissions. You can use values like "Read", "Write", "Modify", or "FullControl".
+Save this script with a .ps1 extension (e.g., Grant-FileAccess.ps1) and follow the same steps mentioned earlier to execute it using PowerShell. This script will grant the specified user or group the desired permissions for the file. Make sure to run it with appropriate administrative privileges if needed.
+
+
+
+
+
+
+
+# Define variables
 $folderPath = "\\server\sharedFolder"  # Replace with the path to your shared folder
 $userOrGroupName = "DOMAIN\Username"   # Replace with the user or group you want to grant access to
 $permissions = "Modify"                # Replace with the desired permissions (e.g., Read, Write, Modify, FullControl)
