@@ -1,3 +1,91 @@
+
+CollegeSidekick
+Search for documents...
+Log in
+Join
+
+12/08/20041 Center of Excellence Data WarehousingCenter of Excellence Data Warehousing ETL ARCHITECTURE 
+12/08/20042ETL Architecture Options - Overview 
+12/08/20043 ETL Architecture Options - Guidelines • Provide information about the ETL tool. • Explain different components of ETL tool. • Provide architecture diagram of the ETL tool and mention how the different components of architecture interacts with each other. • Explain different plug-inns available with the ETL tool. Explain the command line interface if available. • Make sure that all the tool related concepts that you will be using through out the document are well explained here. • Explain the factors to be considered while suggesting the ETL infrastructure. This factors can be tool dependant, client environment dependant or it can be based on the best practices from Wipro's experience. • Provide different option of architecture by which the tool can be configured and use effectively in the organization, the option may be based on setup of repository setup. Provide pros and cons for each of the options. Limit the number of option to max 4 and then suggest the one appropriately which will suite the client's requirement and environment • Make sure that you are handling the geographically distributed architecture is required, also make sure that the architecture suggested is flexible enough to expand as needed • Provide different option for Disaster recovery solutions and Highly Availability System solutions
+12/08/20044ETL Architecture Options - Guidelines • Architecture Option 1 Explain the architecture with the diagram and provide pros and cons. Explain how this option can be implemented in client environment. Probably this can be a distributed architecture ( explained in ETL Framework session) • Architecture Option 2 Explain the architecture with the diagram and provide pros and cons. Explain how this option can be implemented in client environment. Probably this can be a centralized architecture ( explained in ETL Framework session) • Architecture Option 3 Explain the architecture with the diagram and provide pros and cons. Explain how this option can be implemented in client environment. Probably this can be a geographically distributed architecture ( explained in ETL Framework session) • Recommendation for ETL Infrastructure Explain the recommended architecture option for ETL infrastructure and provide justification. Explain how client can be maximum benefited from the recommended architecture option in their current environment. Also provide small roadmap for client regarding how they should grow with this option. 
+
+12/08/20045ETL Design Considerations 
+12/08/20046ETL Design Considerations • Modularity • Consistency • Flexibility • Speed • Heterogeneity • Meta Data Management 
+12/08/20047ETL Design Considerations • Modularity ETL systems should contain modular elements which encourages reuse and makes them easy to modify when implementing changes
+ • Consistency ETL systems should guarantee consistency of data when it is loaded into the data warehouse. An entire data load should be treated as a single logical transaction— (either commit or rollback).
+ • Flexibility ETL systems may be appropriate to accomplish some transformations in text files and some on the source data system; others may require the development of custom applications 
+
+12/08/20048ETL Design Considerations 
+• Speed ETL systems should be as fast as possible. 
+• Heterogeneity ETL systems should be able to work with a wide variety of data in different formats 
+
+12/08/20049ETL Architectures - Types 
+Page
+7
+of 76
+Uploaded by pep.perez on coursehero.com
+College Sidekick
+RESOURCES
+Study Guides
+Documents Sitemap
+FAQ
+LEGAL
+Copyright, Community Guidelines, DSA & other Legal Resources
+Honor Code
+Terms
+Academic Integrity
+Privacy Policy
+Cookie Policy
+Do not Sell or Share My Personal Info
+SUBJECTS
+Accounting
+Aerospace Engineering
+Anatomy
+Anthropology
+Arts & Humanities
+Astronomy
+Biology
+Business
+Chemistry
+Civil Engineering
+Computer Science
+Communications
+Economics
+Electrical Engineering
+English
+Finance
+Geography
+Geology
+Health Science
+History
+Industrial Engineering
+Information Systems
+Law
+Linguistics
+Management
+Marketing
+Material Science
+Mathematics
+Mechanical Engineering
+Medicine
+Nursing
+Philosophy
+Physics
+Political Science
+Psychology
+Religion
+Sociology
+Statistics
+SOCIAL
+facebook
+youtube
+twitter
+© Learneo, Inc. 2024
+*College Sidekick is not sponsored or endorsed by any college or university.
+
+
+
+
 # Define variables
 $filePath = "\\server\sharedFolder\example.txt"  # Replace with the path to your file
 $userOrGroupName = "DOMAIN\Username"             # Replace with the user or group you want to grant access to
