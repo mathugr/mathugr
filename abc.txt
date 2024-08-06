@@ -1,3 +1,118 @@
+General Usability
+How would you rate the overall usability of the application?
+How intuitive do you find the user interface?
+How easy is it to navigate through the application?
+End-to-End Digitization
+How effectively does the application digitize your end-to-end processes?
+Are there any manual steps that you feel could be digitized?
+Self-Service Capabilities
+How satisfied are you with the self-service features of the application?
+How often do you need to contact support for issues you believe should be self-serviceable?
+Personalization
+How well does the application personalize your experience based on your preferences and usage?
+Do you feel the application provides relevant recommendations and content?
+Multi-Channel Connectivity
+How seamlessly does the application connect across different channels (e.g., web, mobile, email)?
+Have you experienced any issues with data consistency across channels?
+Configuration Driven
+How easy is it to configure the application to meet your specific needs?
+How often do you need to make configuration changes, and how straightforward is the process?
+Client User Interface
+How would you rate the visual design of the client user interface?
+How responsive is the user interface during your interactions?
+Additional Feedback
+What features do you find most valuable in the application?
+Are there any features or improvements you would like to see in future updates?
+Would you like to add or modify any questions to better suit your needs?
+
+
+
+You
+Sent by you:
+need list survey questions to evaluate N application. integration -consistent security patterns .near real time api based  integration ,réuse  of shared capabilities (self service onboarding)
+Copilot
+Sent by Copilot:
+Sure, here are some survey questions to evaluate an application’s integration capabilities, focusing on consistent security patterns, near real-time API-based integration, and reuse of shared capabilities:
+
+Consistent Security Patterns
+How satisfied are you with the security measures implemented in the application?
+How consistently are security patterns applied across different modules of the application?
+Have you encountered any security issues or vulnerabilities while using the application?
+Near Real-Time API-Based Integration
+How effective is the application’s API integration in providing near real-time data updates?
+How often do you experience delays or latency issues with the API integrations?
+How easy is it to integrate the application with other systems using its APIs?
+Reuse of Shared Capabilities (Self-Service Onboarding)
+How effective is the self-service onboarding process in the application?
+How well does the application support the reuse of shared capabilities across different modules?
+How satisfied are you with the documentation and support provided for self-service onboarding?
+Additional Feedback
+What improvements would you suggest for enhancing the application’s integration capabilities?
+Are there any specific features or functionalities you feel are missing in the current integration setup?
+Would you like to add or modify any questions to better suit your needs?
+
+You
+Sent by you:
+need list survey questions to evaluate N application. resiliency -appropriately tier-rated .,network segmented,load balanced , data secured high flexible change management and supportability ,with clear maps system resource principles in practice...
+Copilot
+Sent by Copilot:
+Sure, here are some survey questions to evaluate an application’s resiliency, focusing on tier-rating, network segmentation, load balancing, data security, flexible change management, supportability, and system resource principles:
+
+Tier-Rating
+How well does the application adhere to its tier-rating for different components?
+Are the critical components appropriately prioritized and managed according to their tier-rating?
+Network Segmentation
+How effective is the network segmentation in isolating different parts of the application?
+Have you experienced any issues related to network segmentation?
+Load Balancing
+How well does the application handle load balancing during peak usage times?
+Have you encountered any performance issues that could be attributed to load balancing?
+Data Security
+How satisfied are you with the data security measures implemented in the application?
+Have you experienced any data breaches or security incidents while using the application?
+Flexible Change Management
+How flexible is the change management process for the application?
+How well does the application support rapid changes and updates without causing disruptions?
+Supportability
+How would you rate the overall supportability of the application?
+How responsive and effective is the support team in addressing issues?
+System Resource Principles
+How clear and well-documented are the system resource principles in practice?
+How effectively are these principles applied to ensure optimal performance and resource utilization?
+Additional Feedback
+What improvements would you suggest for enhancing the application’s resiliency?
+Are there any specific features or functionalities you feel are missing in the current setup?
+Would you like to add or modify any questions to better suit your needs?
+
+You
+Sent by you:
+need list survey questions to evaluate N application. modern technology - appropriately decoupled (non monolithic) micro functions ,tech currency with net zero non permitted technology , container ready ,closed ready and fully automated delivery
+Copilot
+Sent by Copilot:
+Sure, here are some survey questions to evaluate an application’s modern technology capabilities, focusing on decoupled micro functions, tech currency, container readiness, cloud readiness, and fully automated delivery:
+
+Decoupled Micro Functions
+How effectively is the application decoupled into micro functions rather than being monolithic?
+How easy is it to develop, deploy, and manage individual micro functions?
+Tech Currency
+How up-to-date is the application with the latest technologies and standards?
+Are there any non-permitted technologies still in use within the application?
+Container Readiness
+How well does the application support containerization (e.g., Docker, Kubernetes)?
+How easy is it to deploy and manage the application in a containerized environment?
+Cloud Readiness
+How well is the application optimized for cloud deployment?
+How seamless is the process of migrating the application to different cloud environments?
+Fully Automated Delivery
+How effective is the application’s automated delivery pipeline (CI/CD)?
+How often do you encounter issues during automated deployments?
+Additional Feedback
+What improvements would you suggest for enhancing the application’s modern technology capabilities?
+Are there any specific features or functionalities you feel are missing in the current setup?
+Would you like to add or modify any questions to better suit your needs?
+
+
+
 
 CollegeSidekick
 Search for documents...
