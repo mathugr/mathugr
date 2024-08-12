@@ -1,0 +1,114 @@
+Here's the updated architecture diagram that includes the PingFederate token from the vendor side and how it integrates into the architecture:
+
+Updated Architecture Diagram
+plaintext
+Copy code
++---------------------------------------------------------+
+|                     User's Browser                      |
+|                                                         |
+|  +----------------------+        +-----------------+    |
+|  |  Frontend Application|        | Authentication  |    |
+|  | (UI/UX, React/Vue/etc.)|        | (User ID/PWD + MFA)|    |
+|  +----------------------+        +-----------------+    |
+|            |                              |              |
+|            |                              |              |
+|            |                              v              |
+|            |                        +-------------------+  |
+|            |                        |  API Key Storage  |  |
+|            |                        |  (Vendor's API)   |  |
+|            |                        +-------------------+  |
+|            |                              |              |
+|            |                              v              |
+|            |                        +-------------------+  |
+|            |                        | PingFederate      |  |
+|            |                        | Token Handling    |  |
+|            |                        | (Token Retrieval) |  |
+|            |                        +-------------------+  |
+|            |                              |              |
++------------+                              v              |
+             |                        +---------------------+
+             |                        |  Token Management   |
+             |                        |  and Storage        |
+             |                        +---------------------+
+             |                              |
+             v                              |
++---------------------------------------------------------+
+|                     Client Proxy Server                 |
+|                                                         |
+|  +-------------------------+                            |
+|  |  Proxy Authentication   |                            |
+|  | (Basic/NTLM/etc.)        |                            |
+|  +-------------------------+                            |
+|                                                         |
+|  +----------------------+                                |
+|  |  Proxy Server       |                                |
+|  +----------------------+                                |
+|           |                                             |
++-----------+---------------------------------------------+
+            |
+            v
++---------------------------------------------------------+
+|                   Client's Internal Network             |
+|                                                         |
+|  +----------------------+          +------------------+  |
+|  |  Client API Server  |          |  PingFederate    |  |
+|  |  (REST/SOAP/GraphQL) |          |  Authentication  |  |
+|  |  +----------------+ |          |  (No SSO)        |  |
+|  |  | API Key         | |          |  +------------------+  |
+|  |  | Validation      | |          |          |            |
+|  +----------------------+          |          v            |
+|                                  |          +------------------+  |
+|                                  |          |  Token Validation |  |
+|                                  |          |  and Access       |  |
+|                                  |          +------------------+  |
++----------------------------------------------------------+
+            |
+            v
++---------------------------------------------------------+
+|                     AWS Cloud Infrastructure            |
+|                                                         |
+|  +---------------------+        +---------------------+ |
+|  |  AWS Services       |        |  Secure Storage     | |
+|  | (S3, DynamoDB, etc.)|        |  (Secrets Manager)  | |
+|  +---------------------+        +---------------------+ |
++---------------------------------------------------------+
+Diagram Description
+User's Browser:
+
+Frontend Application: The user interacts with the frontend application.
+Authentication: Handles user ID/password with MFA.
+API Key Storage: Stores the API key used for client API authentication.
+PingFederate Token Handling: Manages retrieval and storage of PingFederate tokens. Tokens are used for authenticated requests to the client API and AWS services.
+Client Proxy Server:
+
+Proxy Authentication: Handles authentication for the proxy.
+Proxy Server: Routes requests through the proxy to the internal network.
+Client's Internal Network:
+
+Client API Server: Validates both the API key and the PingFederate token. Handles API requests.
+PingFederate Authentication (No SSO): Manages token validation without SSO.
+AWS Cloud Infrastructure:
+
+AWS Services: Interacts with AWS services.
+Secure Storage: Manages AWS credentials and secrets.
+Data Flow
+User Authentication and Token Handling:
+
+The user authenticates using MFA.
+The frontend application retrieves a PingFederate token for accessing the client API and AWS.
+API Calls through Proxy:
+
+The frontend application sends API requests through the proxy server.
+Requests include both the API key and the PingFederate token for authentication.
+Client API Access:
+
+The client’s API server verifies the API key and PingFederate token.
+The server processes the request and returns the data.
+AWS Integration:
+
+The frontend application accesses AWS services using the PingFederate token or AWS credentials.
+Security Considerations
+Token Handling: Securely store and manage PingFederate tokens and API keys.
+Data Encryption: Use TLS for data in transit and ensure encryption for data at rest.
+Proxy Security: Secure proxy authentication and routing.
+Monitoring: Implement logging and monitoring for API access, token usage, and security events.
