@@ -1,0 +1,32 @@
+cope of Threat Modeling:
+High-level scope: Assume that each application will undergo a standard threat modeling process, focusing on key areas such as authentication, authorization, data flow, and external dependencies.
+Tooling: Assume the availability of threat modeling tools (e.g., Microsoft Threat Modeling Tool, OWASP Threat Dragon) that can streamline the process.
+Stakeholder Involvement: Assume the availability of subject matter experts (SMEs) and application owners for consultation.
+Historical Data: Assume that historical security incidents and existing documentation (like architecture diagrams) are available for each application.
+Environment: Assume that all applications are running in a consistent environment (e.g., same cloud platform or data center) which reduces complexity.
+2. Define T-Shirt Sizing for Efforts
+XS (Extra Small):
+
+Criteria: Simple applications with minimal external dependencies, low user interaction, and straightforward data flows.
+Effort: 1-2 days per application.
+Example: Internal tools or scripts used by small teams.
+S (Small):
+
+Criteria: Applications with moderate complexity, limited user roles, and basic data handling, possibly with a few external APIs or third-party services.
+Effort: 2-4 days per application.
+Example: Internal dashboards, basic reporting tools.
+M (Medium):
+
+Criteria: Applications with several user roles, complex data flows, integration with multiple APIs or third-party services, and handling sensitive data.
+Effort: 5-7 days per application.
+Example: E-commerce sites, enterprise internal portals.
+L (Large):
+
+Criteria: Highly complex applications with extensive external integrations, numerous user roles, handling sensitive or regulated data, and requiring detailed threat modeling.
+Effort: 8-12 days per application.
+Example: Enterprise-level CRM, ERP systems.
+XL (Extra Large):
+
+Criteria: Very large, mission-critical applications with global user bases, extensive integrations, and stringent security requirements.
+Effort: 12+ days per application.
+Example: Online banking systems, global payment processing platforms.
