@@ -1,6 +1,33 @@
 mTLS
 
+import requests
 
+# Paths to the client certificate, client key, and CA certificates
+client_cert = '/path/to/client-cert.pem'
+client_key = '/path/to/client-key.pem'
+ca_cert = '/path/to/ca-cert.pem'
+
+# Making a request to the Baronet API with mTLS
+response = requests.get('https://baronet.internal/resource', 
+                        cert=(client_cert, client_key), 
+                        verify=ca_cert)
+
+print(response.status_code)
+print(response.text)
+Server-Side (Baronet API)
+If the Baronet API is implemented in Flask with gunicorn and gevent, here’s how you might configure it:
+
+bash
+Copy code
+gunicorn --certfile=/path/to/server-cert.pem \
+         --keyfile=/path/to/server-key.pem \
+         --ca-certs=/path/to/ca-cert.pem \
+         --cert-reqs=2 \  # This requires a valid client certificate
+         --bind 0.0.0.0:443 myapp:app
+
+
+
+&&&&&&&&&&&&&&&&&&&&&
 You said:
 how to show certifiation information like issuer/HSM details in COnceptual digarams for mTLS with client side and baronet side
 ChatGPT said:
