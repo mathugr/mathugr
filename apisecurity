@@ -1,3 +1,52 @@
+
+               [Internet]
+                   |
+                   v
+               [Browser] 
+                   |
+               [UserID/PWD/MFA Authentication]
+                   |
+                   v
+   +---------------------------------------------+
+   |        Trusted Boundary                     |
+   |                                             |
+   | [AWS Hosting]                               |
+   |     |                                       |
+   |     v                                       |
+   | [Application Load Balancer (ALB)]           |
+   |     |                                       |
+   |     v                                       |
+   | [MTLS Connection] <cert: client_cert        |
+   |                     issuer: CA_name,        |
+   |                     private key: KMS>       |
+   +---------------------------------------------+
+                   |
+                   v
+   +---------------------------------------------+
+   | Client-Side Secured Zone:                   |
+   | [Internal Proxy]                            |
+   |     |                                       |
+   |     v                                       |
+   | [OAuth Endpoint]                            |
+   | http://sso.pingferate.client.com/oauth      |
+   |     |                                       |
+   |     v                                       |
+   | [SAML Token Returned]                       |
+   |     |                                       |
+   |     v                                       |
+   | [IP Restriction Applied]                    |
+   +---------------------------------------------+
+                   |
+                   v
+   +---------------------------------------------+
+   | Baronet Secured API Zone:                   |
+   | [Baronet Secured API]                       |
+   | <cert: server_cert                          |
+   | issuer: CA_name,                            |
+   | private key: KMS>                           |
+   +---------------------------------------------+
+
+
 Here's the updated architecture diagram that includes the PingFederate token from the vendor side and how it integrates into the architecture:
 
 Updated Architecture Diagram
