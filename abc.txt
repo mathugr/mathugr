@@ -1,3 +1,47 @@
+Week;Objective;Tasks;Deliverables
+Week 1;Planning and Preparation;"- Identify use cases: Address Change, Location Update, Job Title Modification.
+- Define inputs/outputs for validation workflows.
+- Determine integration points for Chatbot, MuleSoft, Workday, and Camunda.
+- Set up environments for Camunda, Workday Sandbox, MuleSoft, and Chatbot.";"- Defined use cases and architecture design.
+- PoC environment setup.
+- Initial architecture diagram."
+Week 2;Development and Integration;"- Develop Camunda BPMN workflows for validation rules.
+- Configure MuleSoft to route update requests through Camunda and bypass read-only requests.
+- Update Workday BP rules to call Camunda for update validations.
+- Integrate Chatbot workflows with MuleSoft and Camunda.";"- Functional BPMN workflows in Camunda.
+- Integrated MuleSoft for read/write segregation.
+- Chatbot and Workday integrations completed."
+Week 3;Testing and Validation;"- Conduct unit tests for Camunda workflows and MuleSoft routing.
+- Test end-to-end workflows:
+  1. Chatbot → MuleSoft → Camunda → Workday (updates).
+  2. Workday → Camunda → Workday (direct updates).
+  3. Chatbot → MuleSoft → Workday (read-only requests bypass Camunda).
+- Validate system performance and error handling.";"- Test results for validation and read-only workflows.
+- Performance benchmarks.
+- Error-handling validation."
+Week 4;Refinement, Documentation, and Recommendations;"- Optimize BPMN workflows for performance.
+- Refine MuleSoft routing for better read/write segregation.
+- Document architecture diagrams, API specs, and user guide for managing Camunda rules.
+- Present PoC results and analysis to stakeholders.
+- Recommend scaling and governance practices.";"- Final optimized workflows.
+- Comprehensive documentation (architecture, API specs, user guide).
+- Recommendations for scaling and governance."
+
+
+Conclusion;Details
+Centralized Validation;"Camunda successfully serves as the centralized rule engine for validation during updates. Read-only workflows bypass Camunda, ensuring efficient operations."
+
+Improved Efficiency;"MuleSoft routes updates through Camunda for validation while bypassing it for read-only requests, minimizing latency and improving performance."
+
+Scalability;"BPMN workflows in Camunda are reusable across Chatbot, MuleSoft, and Workday, enabling consistent validation and scalability for additional processes."
+
+Next Steps;"- Scale centralized rule validation to additional Workday processes.
+- Establish governance practices for managing Camunda workflows.
+- Extend Camunda to other enterprise systems."
+
+
+
+
 Aspect, Solution 1: Align Workday BP Rules with MuleSoft, Solution 2: Build RAAS-Based API Wrappers in Workday, Solution 3: Centralized BP Validation via BPMN (Camunda)
 Description, Modify Workday Business Process (BP) rules to ensure they can be invoked alongside API calls facilitated through MuleSoft., Create unified RAAS-based API wrappers in Workday that incorporate BP rules for validation and serve as a consolidated endpoint., Externalize Workday BP validation logic to a centralized BPMN platform (e.g., Camunda), enabling seamless integration across systems.
 Architecture Impact, Retains BP logic within Workday, tightly coupling APIs and validation rules., Introduces a modular API abstraction, reducing direct dependency on Workday APIs., Decouples validation entirely from Workday, placing it within an external BPMN platform.
