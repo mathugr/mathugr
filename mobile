@@ -72,6 +72,12 @@ Corporate Deployment & Security:
 
 
 
+*******************
+Feature	Corporate (MDM)	BYOD (Non-MDM)
+App Deployment	Pushed via MDM (VPP)	Users download from App Store
+SSO Login	Pre-configured in MDM	Email-based SSO redirect
+Security Policies	Enforced by MDM	Conditional Access (MFA, Risk-based)
+Access Management	Full control over devices	Limited (App-based security)
 
 
 %%%%%%%%%%%%%%%%%%%%
