@@ -2,28 +2,50 @@
 Build a Flask-based chatbot web app that:
 
 1. Accepts user input via a chat box.
-2. Classifies the input as either a question or a command.
-3. If it's a question (e.g. "show HR emails"), extract the category and filter a list of email dictionaries by that category.
-4. If it's a command (e.g. "send 1,2 with approved"), parse the indexes and message using regex.
-5. Show the filtered emails in a Bootstrap-styled HTML table with:
+2. Distinguishes between:
+   - Questions (e.g. "show HR emails", "what are the IT issues")
+   - Commands (e.g. "send 1,2 with approved", "mark 3 as resolved")
+3. Classifies each question into one of several categories (HR, IT, Finance, Security) using simple rule-based or ML classification.
+4. If the user asks to show emails, display a Bootstrap-styled HTML table with:
    - Serial number
    - Subject
    - Sender
    - Date
-   - Category (badge color-coded)
-   - Status (Pending or ✅ Sent)
-6. When a send command is received, retrieve the email records by the selected indexes, and simulate sending an email (stub or print).
-7. Mark the email records as sent and update the UI to reflect ✅ status.
-8. Use Bootstrap 5 for styling, Google Fonts for modern look, and FontAwesome icons (optional).
-9. Store email data in-memory using a list of dictionaries for now.
-10. Ensure the app runs locally with minimal dependencies and easy to extend.
+   - Category badge
+   - Status (✅ Sent or Pending)
+5. If the user issues a send/action command (e.g., "send 1,2 with approved"), extract:
+   - The indexes (e.g., 1 and 2)
+   - The action message (e.g., "approved")
+6. Filter email data by index and simulate sending (e.g., print or mark as sent).
+7. After showing a filtered result, the chatbot must **ask a follow-up question**:
+   - "Would you like to send this email?"
+   - "Should I reply with this message?"
+   - "Do you want me to mark this issue as resolved?"
+   The user can reply with "yes", "send it", "cancel", etc.
+8. Use a session variable to track the context between chatbot messages.
+9. Keep all email data in-memory using a list of dictionaries.
+10. Use Bootstrap 5 for the frontend UI and include a nice color theme.
+11. Add simple command parsing with regex to extract action and indexes.
 
-Include:
-- `app.py` with Flask routes and logic
-- `templates/chat.html` for UI
-- `static/style.css` (optional) for custom colors
+Files to generate:
+- app.py (Flask logic and chatbot engine)
+- templates/chat.html (chat UI with table and input)
+- static/style.css (optional for theming)
 
 """
+
+We are designing a chat-driven application that connects to Microsoft Outlook, ingests email metadata and content, and uses machine learning to categorize emails automatically. Users can query the system via chat to retrieve emails by category, view summarized results, and approve or take actions (such as flagging or delegating) directly from the chat interface.
+
+(Assumptions:)
+
+Target user base is within an enterprise using Microsoft 365/Outlook.
+
+Email categories include predefined buckets like "Invoice", "HR Request", "Support", etc., and can be extended by the user.
+
+Real-time classification and approvals are required.
+
+Security and compliance with enterprise policies are mandatory.
+
 Category,Judge's Question,Strong Possible Answer
 Problem Statement,What problem does your solution solve?,"It reduces clutter in enterprise inboxes by automatically classifying emails and enabling chat-based approval or reply workflows."
 Innovation,How is your approach different from standard tools like Outlook rules or filters?,"We provide real-time categorization, command-based approvals, and summarization via a conversational interface, not just filters."
@@ -37,3 +59,51 @@ Deployment,Where does this run, and how is it deployed securely?,"It runs on a s
 Scalability,Can this handle larger email volumes or multiple inboxes?,"Yes. It can be extended to read from multiple inboxes using Graph API and support pagination or indexing for performance."
 ROI/Impact,What measurable benefit does this provide?,"It reduces triage time by up to 70%, improves email response SLAs, and reduces manual effort in categorization and reply handling."
 Next Steps,What are your future plans for this solution?,"Add sentiment/tone detection, integration with AD groups for routing, and a dashboard for insights and reporting."
+
+
+
+
+----
+Must
+
+onnect to Outlook mailboxes via Exchangelib (EWS) in Python with OAuth2.
+
+Ingest and preprocess email metadata and content in real time.
+
+Classify emails into predefined categories on-premise using a chosen ML framework.
+
+Provide initial categories out of the box: Invoice, HR Request, Support, Approval, Appreciation, and Important (subcategories: Boss, Business Partners, Corporate Events).
+
+Provide chat interface for querying by category and retrieving summarized results.
+
+Enable approval actions (flag, delegate, archive) directly from chat.
+
+Ensure data encryption at rest and in transit, and comply with enterprise security policies.
+
+Should
+Should
+
+Allow users to define and extend custom categories via UI or chat commands.
+
+Support multi-language email classification (e.g., English, Spanish).
+
+Maintain an audit log of classification decisions and approvals.
+
+Could
+
+Offer automated retraining of the classification model based on user feedback.
+
+Integrate with other Microsoft 365 services (Calendar, OneDrive).
+
+Won’t
+
+Use any external cloud ML services.
+
+Store email content outside enterprise infrastructure.
+
+(Next:) To refine these requirements, I have two questions:
+
+What initial email categories do you want out of the box beyond Invoice, HR Request, and Support?
+
+Do you have specific performance targets (e.g., max classification latency per email)?
+----
