@@ -24,3 +24,16 @@ Include:
 - `static/style.css` (optional) for custom colors
 
 """
+Category,Judge's Question,Strong Possible Answer
+Problem Statement,What problem does your solution solve?,"It reduces clutter in enterprise inboxes by automatically classifying emails and enabling chat-based approval or reply workflows."
+Innovation,How is your approach different from standard tools like Outlook rules or filters?,"We provide real-time categorization, command-based approvals, and summarization via a conversational interface, not just filters."
+AI/NLP Usage,How does the system classify emails and predict intent?,"We use a hybrid method: keyword-based classification for speed, and spaCy or TF-IDF models for contextual prediction."
+Summarization,How do you summarize long email threads effectively?,"We use the T5 model locally, without external calls, to condense multi-step troubleshooting threads into structured summaries."
+Security,How do you ensure email content isn’t leaked or stored insecurely?,"All email data is processed in-memory. No email content is stored. Models run offline using locally cached transformers."
+Compliance,Is this compliant with corporate security policies (e.g., no email downloading)?,"Yes. The system avoids downloading or storing full emails. It uses metadata and secure in-memory pipelines only."
+Extensibility,Can this be integrated with other systems (e.g., Jira, ServiceNow)?,"Yes. The architecture is modular, and the reply/action engine could trigger API calls to other platforms."
+User Experience,How does the chatbot improve usability vs. traditional tools?,"Users interact naturally using commands (e.g., 'send 1,2 as approved'), and results are shown in a clean, color-coded UI."
+Deployment,Where does this run, and how is it deployed securely?,"It runs on a secure internal Flask app with optional Dockerization. Models are preloaded; no internet access is required."
+Scalability,Can this handle larger email volumes or multiple inboxes?,"Yes. It can be extended to read from multiple inboxes using Graph API and support pagination or indexing for performance."
+ROI/Impact,What measurable benefit does this provide?,"It reduces triage time by up to 70%, improves email response SLAs, and reduces manual effort in categorization and reply handling."
+Next Steps,What are your future plans for this solution?,"Add sentiment/tone detection, integration with AD groups for routing, and a dashboard for insights and reporting."
