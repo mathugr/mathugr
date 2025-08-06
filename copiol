@@ -1,0 +1,26 @@
+"""
+Build a Flask-based chatbot web app that:
+
+1. Accepts user input via a chat box.
+2. Classifies the input as either a question or a command.
+3. If it's a question (e.g. "show HR emails"), extract the category and filter a list of email dictionaries by that category.
+4. If it's a command (e.g. "send 1,2 with approved"), parse the indexes and message using regex.
+5. Show the filtered emails in a Bootstrap-styled HTML table with:
+   - Serial number
+   - Subject
+   - Sender
+   - Date
+   - Category (badge color-coded)
+   - Status (Pending or ✅ Sent)
+6. When a send command is received, retrieve the email records by the selected indexes, and simulate sending an email (stub or print).
+7. Mark the email records as sent and update the UI to reflect ✅ status.
+8. Use Bootstrap 5 for styling, Google Fonts for modern look, and FontAwesome icons (optional).
+9. Store email data in-memory using a list of dictionaries for now.
+10. Ensure the app runs locally with minimal dependencies and easy to extend.
+
+Include:
+- `app.py` with Flask routes and logic
+- `templates/chat.html` for UI
+- `static/style.css` (optional) for custom colors
+
+"""
