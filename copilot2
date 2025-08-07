@@ -1,0 +1,33 @@
+"""
+Build a Flask-based HTML UI for an AI email assistant chatbot.
+
+UI Layout:
+- Use Bootstrap 5 for styling with a vibrant, modern theme (e.g., indigo, teal, or cyan accents).
+- Split the page layout into two main columns:
+  1. Left column (75% width):
+     - Chat window showing:
+       - User input and agent replies styled as chat bubbles
+       - Input textbox at bottom with a "Send" button
+     - Below chat, display an email results table (if any emails are shown by category)
+       - Columns: Serial No, Subject, Sender, Date, Category, Status
+       - Add badge colors based on category (e.g., HR=blue, IT=red, Finance=green)
+       - Use alternating row colors and hover effects for better UX
+  2. Right column (25% width sidebar):
+     - Display a vertical summary panel:
+       - Category count (e.g., HR: 5, IT: 2, etc.) using Bootstrap badges or progress bars
+       - Display "Tips & Commands" section with examples:
+         - “Try: show HR emails”
+         - “Try: send 1,2 with approved”
+         - “Try: where is my payslip?”
+     - Use a card UI with rounded corners and drop shadow for modern look
+
+Functional Requirements:
+- Use Flask template (`chat.html`) with Jinja2 variables for:
+  - Message history (chat)
+  - Email list (table)
+  - Category counts
+- Auto-scroll chat to bottom on new message
+- Ensure mobile responsiveness
+
+Don't use any external AI API or LangChain.
+"""
