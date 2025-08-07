@@ -1,3 +1,134 @@
+✅ PART 1: Project Setup
+🪜 Step-by-Step
+Create project folder:
+
+bash
+Copy
+Edit
+mkdir email_agent_mcp && cd email_agent_mcp
+Create folders:
+
+bash
+Copy
+Edit
+mkdir tools templates static models data test
+Create main files:
+
+bash
+Copy
+Edit
+touch app.py agent_core.py requirements.txt
+Create placeholder files:
+
+bash
+Copy
+Edit
+touch tools/send_email.py tools/get_emails_by_category.py tools/summarize_email.py
+touch templates/chat.html static/style.css
+🧠 PART 2: Train Email Classifier (scikit-learn)
+🪜 Steps
+Prepare training data in data/email_training_data.json:
+
+json
+Copy
+Edit
+[
+  { "subject": "Account access issue", "body": "Can't login to VPN", "label": "IT" },
+  { "subject": "Payslip missing", "body": "No salary slip this month", "label": "HR" }
+]
+Create a training script:
+
+📌 Copilot prompt:
+
+vbnet
+Copy
+Edit
+Train a scikit-learn classifier using TfidfVectorizer + LogisticRegression to classify emails based on subject and body. Save model using joblib to models/email_classifier.joblib.
+❓ PART 3: Train Question Classifier
+🪜 Steps
+Create question dataset: data/question_training_data.json
+
+json
+Copy
+Edit
+[
+  { "question": "How do I access my payslip?", "label": "HR" },
+  { "question": "My laptop isn't turning on", "label": "IT" }
+]
+Create training script:
+
+📌 Copilot prompt:
+
+pgsql
+Copy
+Edit
+Train a scikit-learn model to classify user questions into categories like HR, IT, etc., using TfidfVectorizer and LogisticRegression. Save model to models/question_classifier.joblib.
+🤖 PART 4: Agent with Internal Memory (MCP Style)
+🪜 Steps
+Open agent_core.py
+
+📌 Copilot prompt:
+
+kotlin
+Copy
+Edit
+Build an EmailAgent class that stores internal memory as a dictionary with fields: last_intent, selected_emails, pending_action, action_message, awaiting_confirmation, email_data, interaction_history. Include methods to update context, get context, and log interaction.
+🧩 PART 5: Tool Functions (send_email, filter, summarize)
+🪜 Steps
+Open tools/send_email.py
+
+📌 Copilot prompt:
+
+less
+Copy
+Edit
+Define a function send_email(indexes: list[int], message: str, context: dict) -> dict that updates selected emails as sent and returns a summary string and updated context.
+Open tools/get_emails_by_category.py
+
+📌 Copilot prompt:
+
+less
+Copy
+Edit
+Write a function get_emails_by_category(category: str, context: dict) -> dict that filters context["email_data"] and returns matching emails and updated context.
+Open tools/summarize_email.py
+
+📌 Copilot prompt:
+
+vbnet
+Copy
+Edit
+Create a local email summarizer function that accepts an email's body and returns a short summary using a basic ruleset or placeholder (no transformers).
+🌐 PART 6: Flask Chatbot + UI
+🪜 Steps
+Open app.py
+
+📌 Copilot prompt:
+
+pgsql
+Copy
+Edit
+Build a Flask app with two routes: GET / to load a Bootstrap chat UI and POST /chat to process user messages using the EmailAgent class. Display email table with colors and right sidebar with category counts and tips.
+Open templates/chat.html
+
+📌 Copilot prompt:
+
+sql
+Copy
+Edit
+Create a Bootstrap 5 HTML template with a two-column layout: left chat window, right sidebar with tips and category email counts. Use colorful badges and table.
+Open static/style.css
+
+📌 Copilot prompt:
+
+sql
+Copy
+Edit
+Add CSS styles for alternating row colors, rounded cards, hover highlights, vibrant category color badge
+
+start
+
+
 Unlike a stateless chatbot, an agent:
 
 Keeps memory of past user actions
