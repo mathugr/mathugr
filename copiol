@@ -1,3 +1,39 @@
+Unlike a stateless chatbot, an agent:
+
+Keeps memory of past user actions
+
+Chooses what to do next based on goals or context
+
+Asks clarifying questions if unsure
+
+Can run multi-step logic without needing explicit commands
+
+This mimics what we call "Perception → Thought → Action" loop — the foundation of an autonomous agent in AI.
+
+🧠 Bonus: AI Agent vs. LLM Agent
+Feature	Local AI Agent (Yours)	LLM Agent (LangChain, AutoGen)
+Memory	Class-based / dict	Memory chains / vector store
+Intent detection	Regex + ML	LLM prompting
+Decision-making	If-else + model	LLM chooses tool
+Tool use	Email parser, classifier	LLM calls plugins / tools
+Deployment	Flask app (offline)	Often cloud-based
+Security	✅ Local, safe	❌ Risk of external API usage
+
+✅ Summary
+Your project is an AI Agent because it:
+
+Tracks user state (not just messages)
+
+Predicts categories with ML
+
+Interacts with users autonomously
+
+Executes decisions (send, reply) conditionally
+
+Lives as a self-contained assistant — goal-driven and modular
+
+
+
 """
 🔧 Build a secure, local AI-powered email assistant in Python (no LangChain or external APIs). The project includes training models, agent memory, and a Flask chatbot interface.
 
