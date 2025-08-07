@@ -1,4 +1,95 @@
 """
+🔧 Build a secure, local AI-powered email assistant in Python (no LangChain or external APIs). The project includes training models, agent memory, and a Flask chatbot interface.
+
+---
+
+## 🧠 Part 1: AI Agent Logic (Pure Python)
+
+Create a Python class-based AI agent that:
+
+1. Tracks user intent and chat context with in-memory fields:
+   - last_intent
+   - selected_emails (list of indexes)
+   - action_message (e.g., “approved”)
+   - pending_action (send, reply, escalate)
+   - awaiting_confirmation (bool)
+   - interaction_history (optional list of past commands)
+
+2. Supports two major interaction flows:
+   - A. Viewing: If user says “Show HR emails” or “List finance issues”:
+     - Parse intent and category
+     - Retrieve and display matching emails from a hardcoded or in-memory list of email dicts
+     - Render results as a color-coded HTML table (Bootstrap 5 theme)
+   - B. Sending: If user says “Send 1,2 with approved”:
+     - Extract email indexes and message via regex
+     - Store this as a pending action and ask:
+       “Do you want to send emails 1 and 2 with message ‘approved’?”
+
+3. Handle “yes” or “no” confirmations to execute or cancel the action.
+
+4. Respond clearly to unknown or ambiguous inputs:
+   - “Sorry, I didn't understand. You can say 'show HR emails' or 'send 1,2 with message.'”
+
+---
+
+## 🧾 Part 2: Email Classifier Training (scikit-learn)
+
+Train a scikit-learn text classification model to categorize emails by analyzing:
+- `email.subject + email.body` combined
+
+Steps:
+1. Input data: List of dicts with keys: `subject`, `body`, `label` (e.g., HR, IT, Finance).
+2. Use `TfidfVectorizer` for text feature extraction.
+3. Use `LogisticRegression` or `LinearSVC` for classification.
+4. Split dataset into training/testing, evaluate accuracy.
+5. Save the model using `joblib.dump()` for reuse.
+
+---
+
+## ❓ Part 3: Question Classifier Training
+
+Train another scikit-learn model to classify user **questions** like:
+- “Where is my payslip?” → HR
+- “Laptop not turning on” → IT
+
+Steps:
+1. Use a set of labeled Q&A training pairs: `question`, `category`
+2. Use `TfidfVectorizer` + `LogisticRegression`
+3. Save model with `joblib`
+
+---
+
+## 💬 Part 4: Flask Integration (Chatbot UI)
+
+Integrate the AI agent and both models into a Flask-based chatbot:
+
+1. User types a message in a chat input box.
+2. Backend logic:
+   - If input is a question: predict category with question model → fetch & display matching emails
+   - If input is a command like “send 1,2 as approved”: extract info, confirm, then act
+3. Render results as a Bootstrap HTML table with:
+   - Serial number
+   - Subject
+   - Sender
+   - Category badge
+   - Sent/Pending status
+4. Display follow-up questions like:
+   - “Would you like to send those emails now?”
+   - “Should I mark them as approved?”
+
+---
+
+🛡️ Notes:
+- Entire project must run **locally**
+- Do **not** use LangChain, OpenAI, or external APIs
+- Everything must be in **pure Python + Flask + scikit-learn**
+"""
+
+
+
+
+
+"""
 Build a Flask-based chatbot web app that:
 
 1. Accepts user input via a chat box.
