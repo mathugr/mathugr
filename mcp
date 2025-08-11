@@ -1,0 +1,214 @@
+Got it—here are ready-to-paste GitHub Copilot prompts to turn your project into an MCP-style (Model Context Protocol) agent with local models, tools, and a vibrant Flask UI. Use them at the top of each file (or in Copilot Chat) and let Copilot scaffold the code.
+
+0) How to use these prompts
+Open/create the target file (e.g., mcp_server.py).
+
+Paste the prompt at the very top as a multiline comment.
+
+Start writing a function/class signature below; accept Copilot’s suggestions and iterate.
+
+1) MCP server (FastAPI) + context store
+File: mcp_server.py
+
+python
+Copy
+Edit
+"""
+Build an MCP-style server using FastAPI that exposes tool endpoints with JSON schemas.
+Requirements:
+- No LangChain, no external AI APIs. Pure Python.
+- In-memory ContextStore carrying: user_id, roles, last_intent, selected_emails (list[int]), pending_action, action_message, awaiting_confirmation (bool), interaction_history (list), email_index (dict[int, dict]).
+- Endpoints (POST JSON):
+  - /tools/classify_question {text} -> {category, confidence}
+  - /tools/list_emails {category?, since?, from?, page?, size?} -> {items, next_cursor, counts}
+  - /tools/send_email {indexes, message} -> {sent_ids, status}
+  - /tools/mark_read {indexes} -> {updated_ids, status}
+  - /tools/summarize_thread {message_ids[]} -> {summary}
+- Each endpoint validates input against a Pydantic model; returns structured JSON with tool_response and updated_context.hash.
+- RBAC check: deny mutating tools (send_email, mark_read) if user lacks "can_send".
+- Idempotency: accept optional idempotency_key; ensure repeated sends are not duplicated.
+- Logging: structured logs per tool call without storing email bodies.
+- Add /healthz and /version endpoints.
+"""
+2) MCP tool contracts (schemas) + registry
+File: tools/contracts.py
+
+python
+Copy
+Edit
+"""
+Define Pydantic models (JSON schemas) for each MCP tool.
+- ClassifyQuestionRequest/Response
+- ListEmailsRequest/Response
+- SendEmailRequest/Response
+- MarkReadRequest/Response
+- SummarizeThreadRequest/Response
+Include field docs, examples, and validation (e.g., 1 <= index).
+Create a ToolRegistry that maps 'tool_name' -> (request_model, response_model, handler).
+"""
+3) Context store & policy middleware
+File: context_store.py
+
+python
+Copy
+Edit
+"""
+Implement ContextStore:
+- get_context(user_id) -> dict
+- update_context(user_id, patch: dict) -> dict
+- compute_hash(context) to return a short context version tag
+- Optional: in-memory only; later replace with Redis without changing interface.
+
+Implement PolicyGate:
+- check_rbac(context, tool_name) -> raises if not allowed
+- redact_output(data) -> remove PII-like fields (email bodies) before response
+"""
+4) Local models (scikit-learn) loader & predictors
+File: models/runtime.py
+
+python
+Copy
+Edit
+"""
+Load local scikit-learn pipelines from ./models:
+- email_classifier.joblib  (subject+body -> label)
+- question_classifier.joblib (question -> label)
+
+Expose:
+- predict_email_category(text) -> {label, proba}
+- predict_question_category(text) -> {label, proba}
+
+If models missing, return sensible fallbacks (keyword rules) but log a warning.
+No network calls. Everything fully offline.
+"""
+5) MCP tool implementations (business logic)
+File: tools/impl.py
+
+python
+Copy
+Edit
+"""
+Implement handlers for each tool signature, using ContextStore + models:
+- classify_question(req, context) -> uses question model; updates last_intent; returns {category, confidence}
+- list_emails(req, context) -> filter context.email_index by category/from/since; return items[], counts per category, and page cursor
+- send_email(req, context) -> RBAC check; apply idempotency_key; mark selected emails as sent; stamp message; return {sent_ids, status}
+- mark_read(req, context) -> RBAC check; set 'is_read=True' for indexes; return {updated_ids}
+- summarize_thread(req, context) -> (placeholder): concatenate subjects; or call local summarizer if available; return short summary
+
+Ensure:
+- never return full email bodies unless explicitly requested by a policy-allowed client
+- all functions mutate context via ContextStore.update_context
+- responses are shaped per contracts.py
+"""
+6) Email index adapter (Graph or IMAP metadata only)
+File: adapters/email_index.py
+
+python
+Copy
+Edit
+"""
+Create an EmailIndexAdapter that can load metadata-only messages into context.email_index.
+- load_initial_index(context, source="mock") -> populate with 20-50 sample items (id, subject, sender, date, category?, status, is_read)
+- Optionally implement a GraphAdapter skeleton (no credentials): methods signatures only and TODO notes for corporate integration.
+
+All items should be safe for demos: no PII, no bodies by default.
+"""
+7) Flask UI (vibrant) bridging MCP server
+File: app.py
+
+python
+Copy
+Edit
+"""
+Build a Flask web UI that calls the MCP FastAPI tools via HTTP (localhost).
+Layout:
+- Two columns with Bootstrap 5:
+  - Left: chat stream (user + agent bubbles), input box at bottom
+  - Below chat: vibrant table (striped, hover, badges by category; Status: ✅/Pending)
+- Right: sidebar cards showing:
+  - Counts per category (badges or progress bars)
+  - Tips: “show HR emails”, “send 1,2 with approved”, “mark 3 read”
+Behavior:
+- On submit:
+  - If text starts with 'send' or 'mark', call MCP /tools/send_email or /tools/mark_read
+  - Else call /tools/classify_question then /tools/list_emails with predicted category
+- Auto-scroll chat to bottom; preserve session via Flask session cookie
+Security:
+- Sanitize/escape all user-rendered content
+- No external JS; allow CDN Bootstrap only, or bundle locally if needed
+"""
+8) Training scripts (email + question classifiers)
+File: train_email_classifier.py
+
+python
+Copy
+Edit
+"""
+Write a script that:
+- Reads data/email_training_data.json (list of {subject, body, label})
+- Combines subject+body -> TF-IDF -> LogisticRegression
+- Prints accuracy on a holdout set
+- Saves to models/email_classifier.joblib
+Add CLI args: --input, --output, --test-size, --max-features
+"""
+File: train_question_classifier.py
+
+python
+Copy
+Edit
+"""
+Write a script that:
+- Reads data/question_training_data.json (list of {question, label})
+- TF-IDF -> LogisticRegression
+- Prints accuracy and confusion matrix
+- Saves to models/question_classifier.joblib
+Add CLI args like the email trainer.
+"""
+9) Bootstrap template + vibrant styles
+File: templates/chat.html
+
+python
+Copy
+Edit
+"""
+Produce a responsive Bootstrap 5 template:
+- Left column (col-9): chat window (scrollable, rounded cards), input form at bottom
+- Email table with: #, Subject, Sender, Date, Category (badge colors: HR=primary, IT=danger, Finance=success, Security=warning), Status
+- Right column (col-3): cards showing counts per category, recent actions, and quick tips
+- Use a vibrant color palette and soft shadows; support dark-mode via data-bs-theme
+"""
+File: static/style.css
+
+python
+Copy
+Edit
+"""
+Add vibrant theming:
+- Chat bubbles (agent vs user)
+- Table row hover, striped, subtle shadows
+- Category badges with custom colors
+- Sticky right sidebar; responsive breakpoints
+"""
+10) Tests & ops
+File: test/test_tools.py
+
+python
+Copy
+Edit
+"""
+Unit tests for tool handlers:
+- classify_question returns a valid category and confidence in [0,1]
+- list_emails filters/paginates correctly
+- send_email respects RBAC and idempotency
+- mark_read updates flags
+- summarize_thread returns non-empty summary
+Use pytest; mock ContextStore and inject sample email_index.
+"""
+File: requirements.txt
+
+python
+Copy
+Edit
+"""
+List pinned packages: fastapi, uvicorn, flask, pydantic, scikit-learn, joblib, pandas (optional), python-dotenv (optional).
+"""
