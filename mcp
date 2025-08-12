@@ -1,3 +1,269 @@
+[
+  {
+    "subject": "Annual benefits enrollment opens next week",
+    "body": "Please log into the HR portal to select your health, dental, and vision coverage for the upcoming year. Enrollment closes on September 15.",
+    "label": "HR"
+  },
+  {
+    "subject": "New company holiday policy update",
+    "body": "HR has updated the holiday schedule for 2025. Please review the attached calendar and plan your leave accordingly.",
+    "label": "HR"
+  },
+  {
+    "subject": "Payroll schedule adjustment due to bank holiday",
+    "body": "Paychecks will be deposited one day earlier this month because of the upcoming federal holiday.",
+    "label": "HR"
+  },
+  {
+    "subject": "VPN access issue affecting remote logins",
+    "body": "Our IT team is investigating a VPN authentication error. If you are unable to connect, please raise a ticket in the IT helpdesk.",
+    "label": "IT"
+  },
+  {
+    "subject": "System maintenance scheduled for Saturday",
+    "body": "We will perform server updates between 2 AM and 6 AM EST. Applications may be unavailable during this time.",
+    "label": "IT"
+  },
+  {
+    "subject": "Multi-factor authentication now required",
+    "body": "Starting Monday, all users must enable MFA when logging in to corporate applications. Follow the instructions on the intranet to set it up.",
+    "label": "IT"
+  },
+  {
+    "subject": "Expense reimbursement deadline approaching",
+    "body": "Submit your outstanding business expense claims by August 31 to ensure they are processed in the current quarter.",
+    "label": "Finance"
+  },
+  {
+    "subject": "Quarterly budget review meeting",
+    "body": "Finance will hold the Q3 budget review next Tuesday at 2 PM. Please prepare your departmental reports.",
+    "label": "Finance"
+  },
+  {
+    "subject": "Updated travel policy for 2025",
+    "body": "The finance department has updated per diem rates and flight booking guidelines. See the attached policy document.",
+    "label": "Finance"
+  },
+  {
+    "subject": "Security awareness training required",
+    "body": "All employees must complete the annual phishing and data protection training by September 30.",
+    "label": "Security"
+  },
+  {
+    "subject": "Suspicious login detected on your account",
+    "body": "Security has flagged a login from an unusual location. If this was not you, reset your password immediately.",
+    "label": "Security"
+  },
+  {
+    "subject": "Badge access temporarily restricted",
+    "body": "Due to a system update, some employees may experience badge scanning issues at the main entrance. Security is working to resolve it.",
+    "label": "Security"
+  },
+  {
+    "subject": "Welcome to the onboarding program",
+    "body": "We’re excited to have you join the company. Please complete the new hire documents and attend orientation on your first day.",
+    "label": "HR"
+  },
+  {
+    "subject": "Printer toner replacement request",
+    "body": "The 4th floor printer is out of toner. IT has been notified and will replace the cartridge today.",
+    "label": "IT"
+  },
+  {
+    "subject": "Final reminder: tax document submission",
+    "body": "Submit your W-4 updates by the end of the month to ensure accurate payroll tax deductions.",
+    "label": "Finance"
+  },
+  {
+    "subject": "New phishing scam targeting employees",
+    "body": "Security has identified a fraudulent email campaign impersonating HR. Do not click any suspicious links.",
+    "label": "Security"
+  },
+  {
+    "subject": "Laptop replacement program",
+    "body": "IT will be replacing laptops older than 4 years. Eligible employees will be contacted with replacement details.",
+    "label": "IT"
+  },
+  {
+    "subject": "Health and wellness fair invitation",
+    "body": "Join us for the annual wellness fair featuring free health screenings, nutrition workshops, and giveaways.",
+    "label": "HR"
+  },
+  {
+    "subject": "Budget surplus allocation discussion",
+    "body": "Finance will meet with department heads to discuss how to allocate the Q4 budget surplus.",
+    "label": "Finance"
+  },
+  {
+    "subject": "Password reset policy change",
+    "body": "Security is reducing the password expiration period to 60 days. All accounts must comply starting October 1.",
+    "label": "Security"
+  },
+
+  // ===== New Categories =====
+
+  {
+    "subject": "Purchase order awaiting approval",
+    "body": "The purchase order for office furniture requires your approval before it can be processed. Please review it in the system.",
+    "label": "pending_approval"
+  },
+  {
+    "subject": "Leave request pending your review",
+    "body": "An employee leave request for September 10-14 is awaiting your approval in the HR portal.",
+    "label": "pending_approval"
+  },
+  {
+    "subject": "Contract renewal requires sign-off",
+    "body": "The vendor contract renewal for software licensing is pending your approval. Deadline is August 20.",
+    "label": "pending_approval"
+  },
+  {
+    "subject": "Great job on the Q2 project delivery",
+    "body": "Your leadership and dedication were key to meeting the Q2 project deadlines. Well done!",
+    "label": "appreciation"
+  },
+  {
+    "subject": "Thank you for assisting with the client meeting",
+    "body": "Your support during the presentation made a huge difference. We appreciate your efforts.",
+    "label": "appreciation"
+  },
+  {
+    "subject": "Kudos for process improvement initiative",
+    "body": "Your idea to automate the approval workflow saved significant time. Kudos!",
+    "label": "appreciation"
+  },
+  {
+    "subject": "Bank account verification needed",
+    "body": "We noticed unusual activity in your bank account. Click the link to verify your details immediately.",
+    "label": "scam"
+  },
+  {
+    "subject": "Your tax refund is waiting",
+    "body": "You are eligible for a tax refund. Submit your personal details via the attached form to claim it.",
+    "label": "scam"
+  },
+  {
+    "subject": "Prize notification: you have won",
+    "body": "Congratulations! You have won a $500 gift card. Provide your card number to receive the reward.",
+    "label": "scam"
+  },
+  {
+    "subject": "Meeting with CEO at 10 AM",
+    "body": "Join the CEO in the boardroom for an important strategic planning session.",
+    "label": "important_emails"
+  },
+  {
+    "subject": "Client escalation — urgent attention needed",
+    "body": "A key client has raised an urgent concern about the ongoing project. Please address immediately.",
+    "label": "important_emails"
+  },
+  {
+    "subject": "Board of Directors quarterly report review",
+    "body": "The board requires your review of the quarterly performance report by Friday.",
+    "label": "important_emails"
+  }
+]
+
+
+[
+  {
+    "question": "Show me the latest HR announcements",
+    "label": "HR"
+  },
+  {
+    "question": "What is the updated holiday schedule?",
+    "label": "HR"
+  },
+  {
+    "question": "List all benefits enrollment emails",
+    "label": "HR"
+  },
+  {
+    "question": "Display all open IT tickets",
+    "label": "IT"
+  },
+  {
+    "question": "Are there any planned system maintenance events?",
+    "label": "IT"
+  },
+  {
+    "question": "Find all VPN-related issues in my inbox",
+    "label": "IT"
+  },
+  {
+    "question": "Show me pending expense reimbursements",
+    "label": "Finance"
+  },
+  {
+    "question": "List finance policy updates",
+    "label": "Finance"
+  },
+  {
+    "question": "What are the latest budget meeting invites?",
+    "label": "Finance"
+  },
+  {
+    "question": "Do I have any security alerts?",
+    "label": "Security"
+  },
+  {
+    "question": "Show emails about phishing or suspicious logins",
+    "label": "Security"
+  },
+  {
+    "question": "List security policy changes",
+    "label": "Security"
+  },
+  {
+    "question": "Which purchase orders are still awaiting approval?",
+    "label": "pending_approval"
+  },
+  {
+    "question": "Show leave requests pending my review",
+    "label": "pending_approval"
+  },
+  {
+    "question": "List contracts that require sign-off",
+    "label": "pending_approval"
+  },
+  {
+    "question": "Show all appreciation messages",
+    "label": "appreciation"
+  },
+  {
+    "question": "Any kudos or thank you notes for me?",
+    "label": "appreciation"
+  },
+  {
+    "question": "List recognition emails from my manager",
+    "label": "appreciation"
+  },
+  {
+    "question": "Do I have any scam or phishing emails?",
+    "label": "scam"
+  },
+  {
+    "question": "List suspicious prize or refund notifications",
+    "label": "scam"
+  },
+  {
+    "question": "Show me fake bank or tax emails",
+    "label": "scam"
+  },
+  {
+    "question": "What are the most important emails I need to read today?",
+    "label": "important_emails"
+  },
+  {
+    "question": "List all CEO or board meeting invitations",
+    "label": "important_emails"
+  },
+  {
+    "question": "Show urgent client escalations",
+    "label": "important_emails"
+  }
+]
+------------STATRT
 Got it—here are ready-to-paste GitHub Copilot prompts to turn your project into an MCP-style (Model Context Protocol) agent with local models, tools, and a vibrant Flask UI. Use them at the top of each file (or in Copilot Chat) and let Copilot scaffold the code.
 
 0) How to use these prompts
