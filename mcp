@@ -12,6 +12,13 @@ async def seed_index():
         store.update_context("demo", ctx)
 
 
+@app.route("/")
+def index():
+    # Clear chat and any old email results for a fresh start
+    session.pop("chat_history", None)
+    session.pop("last_category", None)
+    return render_template("chat.html")
+
 Create two files with valid JSON arrays and no comments:
 1) email_training_data.json — 160 items, 20 per label across: HR, IT, Finance, Security, pending_approval, appreciation, scam, important_emails. Fields: subject, body, label. Corporate‑style, safe, no PII, varied wording; bodies 25–120 words; scam items use [malicious-link] placeholders.
 2) question_training_data.json — 160 items, 20 per label with the same labels. Fields: question, label. Short (4–12 words), diverse phrasings (show/list/find/what are/etc).
