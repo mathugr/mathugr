@@ -1,3 +1,17 @@
+from context_store import ContextStore
+from adapters.email_index import EmailIndexAdapter
+
+store = ContextStore()
+adapter = EmailIndexAdapter()
+
+@app.on_event("startup")
+async def seed_index():
+    ctx = store.get_context(user_id="demo")  # Use your actual user_id logic
+    if not ctx.get("email_index"):
+        adapter.load_initial_index(ctx, source="mock")
+        store.update_context("demo", ctx)
+
+
 Create two files with valid JSON arrays and no comments:
 1) email_training_data.json — 160 items, 20 per label across: HR, IT, Finance, Security, pending_approval, appreciation, scam, important_emails. Fields: subject, body, label. Corporate‑style, safe, no PII, varied wording; bodies 25–120 words; scam items use [malicious-link] placeholders.
 2) question_training_data.json — 160 items, 20 per label with the same labels. Fields: question, label. Short (4–12 words), diverse phrasings (show/list/find/what are/etc).
