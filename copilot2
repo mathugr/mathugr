@@ -1,3 +1,11 @@
+Audience;Variant
+Executive Panel;"AI-Driven Email Triage System for Enterprise Productivity"
+Technical Docs;"Intent-Based NLP Routing Assistant (SpaCy Classifier)"
+Product Pitch;"Secure, Proxy-Friendly AI Email Assistant"
+Roadmap Slide;"Phase 1: Non-Generative Routing → Phase 2: Hybrid RAG"
+Let me know if you’d like this formatted for direct use in Excel, or if you want to exp
+
+-----------------
 Question;Suggested Response
 How does this differ from existing email filters or rules?;"Traditional filters are static and rule-based. Ours is dynamic—learning from patterns, adapting to context, and enabling natural language interaction."
 What’s the business ROI?;"We estimate a 20–30% reduction in time spent on email triage, with faster response times and improved compliance tracking."
