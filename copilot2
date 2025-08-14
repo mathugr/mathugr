@@ -1,3 +1,20 @@
+
+
+We’re excited to introduce our new Enterprise AI Agent—a secure, non-generative assistant that classifies and routes internal emails with precision. Built on SpaCy and Scikit-learn, it operates entirely within our proxy-safe environment and integrates seamlessly with both a chatbot interface and a new React-based dashboard for users who prefer structured workflows.
+
+While the current release focuses on intent classification and secure retrieval, we’re actively designing future enhancements to support:
+
+🔁 Automated follow-ups based on email engagement and status
+
+⏰ Reminder scheduling to reduce missed responses
+
+📊 Email status tracking (e.g., pending, responded, escalated) for visibility and accountability
+
+🧠 Resolution monitoring agents that detect delays and escalate bottlenecks automatically
+
+These features will help streamline internal communication, improve response times, and reduce manual tracking—while staying fully auditable and enterprise-safe.
+
+--------
 We’re excited to introduce our new Enterprise AI Agent—a secure, non-generative assistant that classifies and routes internal emails with precision. Built on SpaCy and Scikit-learn, it operates entirely within our proxy-safe environment and integrates seamlessly with both our chatbot interface and a new React-based dashboard.
 
 Whether users prefer conversational interaction or a structured UI, the agent ensures fast, accurate access to relevant internal messages—without relying on generative models or external APIs.
