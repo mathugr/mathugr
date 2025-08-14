@@ -1,4 +1,9 @@
-Audience;Variant
+
+“Our current system is a non-generative AI-powered assistant, built on secure, explainable ML techniques like Sklearn and SpaCy. It classifies and routes internal emails with high precision—without relying on generative models or external APIs. This ensures full control, auditability, and proxy-friendly deployment.
+
+As a next step, we can optionally extend this into a hybrid RAG pipeline, enabling contextual generation while preserving enterprise constraints.”
+--
+-Audience;Variant
 Executive Panel;"AI-Driven Email Triage System for Enterprise Productivity"
 Technical Docs;"Intent-Based NLP Routing Assistant (SpaCy Classifier)"
 Product Pitch;"Secure, Proxy-Friendly AI Email Assistant"
