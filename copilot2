@@ -1,3 +1,47 @@
+Business Case
+Modern enterprises face an overwhelming volume of emails, many of which require categorization, triage, and action. Manual sorting is inefficient, error-prone, and costly. This project introduces an AI-powered email classification and interaction system that automates sorting, enables conversational querying, and streamlines decision-making—dramatically improving productivity and governance.
+
+Target Outcomes:
+
+Reduce manual email triage time by 70%
+
+Improve classification accuracy and consistency
+
+Enable actionable insights via dashboard and conversational interface
+
+Enhance compliance and auditability through structured email handling
+
+🚀 Key Features
+1. Automated Email Classification
+Connects securely to Microsoft Exchange Server
+
+Extracts metadata: From, To, Subject, Body, Received Date
+
+Uses Scikit-learn Random Forest model to assign predefined labels (e.g., Finance, HR, Legal)
+
+2. Conversational Query Interface
+Built with Python Flask and integrated with spaCy NLP
+
+Users ask natural-language questions (e.g., “Show me pending approvals”)
+
+spaCy predicts category → retrieves matching emails from memory
+
+Displays results in chat history as a serial-numbered table
+
+3. Actionable Chat Commands
+Users can respond with commands like Send 1,4 as Approved
+
+System sends selected emails with custom messages
+
+Supports email composition directly from chat
+
+4. Dashboard Visualization
+React-based dashboard for non-chat users
+
+Displays categorized email volumes, trends, and actions
+
+Real-time updates from the Sklearn classifier
+
 """
 Build a Flask-based HTML UI for an AI email assistant chatbot.
 
