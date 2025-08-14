@@ -1,4 +1,23 @@
+We’re excited to introduce our new Enterprise AI Agent—a secure, non-generative assistant that classifies and routes internal emails with precision. Built on SpaCy and Scikit-learn, it operates entirely within our proxy-safe environment and integrates seamlessly with both our chatbot interface and a new React-based dashboard.
 
+Whether users prefer conversational interaction or a structured UI, the agent ensures fast, accurate access to relevant internal messages—without relying on generative models or external APIs.
+
+Key highlights:
+
+🔍 Intent-based classification using SpaCy/Sklearn
+
+📂 Internal email retrieval with secure routing
+
+🖥️ Chatbot interface for conversational access
+
+📊 React dashboard for structured, non-chat workflows
+
+🧩 Optional GenAI extension (Hybrid RAG-ready)
+
+🛡️ Fully auditable, modular, and proxy-friendly
+
+This agent is designed to scale across departments and evolve into a contextual assistant when needed. Stay tuned for demo invites, onboarding materials, and dashboard access links.
+----
 “Our current system is a non-generative AI-powered assistant, built on secure, explainable ML techniques like Sklearn and SpaCy. It classifies and routes internal emails with high precision—without relying on generative models or external APIs. This ensures full control, auditability, and proxy-friendly deployment.
 
 As a next step, we can optionally extend this into a hybrid RAG pipeline, enabling contextual generation while preserving enterprise constraints.”
