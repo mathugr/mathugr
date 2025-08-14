@@ -1,4 +1,21 @@
-riteria;Score (out of 10);Rationale
+Question;Suggested Response
+How does this differ from existing email filters or rules?;"Traditional filters are static and rule-based. Ours is dynamic—learning from patterns, adapting to context, and enabling natural language interaction."
+What’s the business ROI?;"We estimate a 20–30% reduction in time spent on email triage, with faster response times and improved compliance tracking."
+How do you handle security and data privacy?;"All processing is internal-only, with no external API calls. We support role-based access, audit logging, and Exchange-native integration."
+Can this scale across departments or geographies?;"Absolutely. The architecture is modular—new categories, languages, or integrations can be added without disrupting core functionality."
+What’s the user adoption strategy?;"We offer both chatbot and dashboard interfaces to meet different user preferences, backed by onboarding guides and usage analytics."
+
+
+
+
+“In today’s enterprise, email remains the backbone of communication—but it’s also a productivity bottleneck. Our solution transforms email chaos into clarity. Using machine learning and NLP, we automatically classify incoming emails and surface actionable insights through two intuitive interfaces: a conversational chatbot and a visual dashboard. Whether you're a frontline employee or an executive, you get the right message, at the right time, with the right context.
+
+Designed for secure, proxy-restricted environments, our system integrates seamlessly with Microsoft Exchange and respects internal-only constraints. It’s modular, scalable, and built to evolve—whether that’s adding new categories, integrating with Teams, or adapting to user feedback.
+
+The result? Less time sorting, more time acting. We’re not just improving email—we’re unlocking enterprise productivity.”
+
+
+criteria;Score (out of 10);Rationale
 Business Impact;9.5;Addresses a universal pain point—email overload—with measurable ROI in productivity and compliance.
 Innovation & Differentiation;8.5;Combines ML classification with NLP-driven conversational interface and dashboard—a rare hybrid.
 Technical Feasibility;9.0;Uses proven tools (Sklearn, spaCy, Flask, React) in a modular, scalable architecture.
