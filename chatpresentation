@@ -1,0 +1,40 @@
+Enterprise AI Email Assistant – Transforming Email Chaos into Clarity
+
+Header Statement:
+Secure, non-generative AI that classifies, routes, and manages internal emails—boosting productivity while staying fully enterprise-safe.
+
+Key Impact Metrics (Icons + Numbers):
+
+📈 20–30% Productivity Gain – Less time spent on triage.
+
+⚡ 70% Faster Sorting – Automated classification replaces manual rules.
+
+🛡️ 100% Internal Processing – No external API calls; fully auditable.
+
+Core Features (Visual Grid):
+
+Intent-Based Classification – ML models (SpaCy/Sklearn) learn and adapt.
+
+Secure Integration – Microsoft Exchange + role-based access + audit logs.
+
+Dual Interfaces – Chatbot for conversational queries, React dashboard for structured workflows.
+
+Actionable Commands – Approve, escalate, or reply directly from chat or dashboard.
+
+Roadmap Timeline:
+
+Phase 1 (Now): Non-generative routing + dashboard + chatbot.
+
+Phase 2 (Planned):
+
+🔁 Automated follow-ups.
+
+⏰ Reminder scheduling.
+
+📊 Status tracking & resolution monitoring.
+
+🧩 Optional Hybrid RAG for contextual generation.
+
+Differentiation Callout (Side Box):
+
+“Unlike static filters, this system learns from patterns, adapts to context, and supports natural language interaction—all within a proxy-safe, enterprise-compliant framework.”
