@@ -1,3 +1,51 @@
+Only changes
+3a. Implement a server-side **ContextStore** with RBAC:
++     - Per-user state: user_id, roles (set[str]), permissions (set[str]), last_intent,
++       selected_indexes (list[int]), pending_action (str|None), action_message (str|None),
++       awaiting_confirmation (bool), interaction_history (list[dict]),
++       email_index (dict[int, dict]), audit_log (list[dict]).
++     - Methods: get(user_id), reset(user_id), update(user_id, **fields),
++       can(user_id, perm:str)->bool, grant(user_id, role|perm), revoke(user_id, role|perm), log(event, meta).
++     - Default roles: viewer, agent, approver, admin. Example perms:
++       view:emails, view:category:<cat>, send:email, mark:resolved, admin:audit.
++     - Storage: in-memory dict keyed by user_id (demo). Flask session holds only user_id/display_name.
++     - Enforce RBAC before listing emails or executing commands; respond with a friendly denial if not can(...).
+
+- 8. Use a session variable to track the context between chatbot messages.
++ 8. Replace session-only context with **ContextStore**:
++     - On each request, load `ctx = ContextStore.get(user_id)` from session.user_id.
++     - Persist conversation state (last_intent, awaiting_confirmation, selected_indexes, action_message) in ContextStore.
++     - Log every decision/action to ctx.audit_log with timestamp, intent, and outcome.
+
++ 11a. When parsing commands, validate permissions and scope:
++      - Require can(user_id, 'send:email') before "send ...".
++      - Require can(user_id, 'mark:resolved') before resolve actions.
++      - Restrict results to categories allowed by `view:category:<cat>`.
++      - If any requested indexes are not permitted, exclude them and notify which were skipped.
+
++ 11b. Follow-up prompts must respect RBAC:
++      - If user lacks permission for the pending_action, ask if they want to request approval
++        (e.g., "You don't have permission to send. Request approval from an approver?").
+
++ 11c. Add lightweight rate/intent guards via ContextStore:
++      - Debounce duplicate sends by hashing (user_id, indexes, action_message).
++      - Store last_intent and prevent accidental repeat within N seconds unless user confirms.
+
++ 13. Extend email item schema to support RBAC filtering:
++      - Add `category` (existing), `status`, and optional `allowed_roles` or `sensitivity` flag.
++      - The UI should only render rows the user can view (server-side filtered).
+
+- Files to generate:
+- - app.py (Flask logic and chatbot engine)
+- - templates/chat.html (chat UI with table and input)
+- - static/style.css (optional for theming)
++ Files to generate (updated):
++ - app.py (Flask logic, command parsing, RBAC helpers; integrates ContextStore)
++ - context_store.py (ContextStore class + simple RBAC policy; in-memory)
++ - templates/chat.html (chat UI; conditionally show admin link if can('admin:audit'))
++ - templates/audit.html (admin-only audit log view of last 100 events)
++ - static/style.css (optional for theming)
+
 ✅ PART 1: Project Setup
 🪜 Step-by-Step
 Create project folder:
