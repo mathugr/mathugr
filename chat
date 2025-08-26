@@ -1,0 +1,94 @@
+Chat.html
+/*
+You are GitHub Copilot. Generate ONE self-contained HTML file (inline CSS + vanilla JS) for an “Email Categorization Dashboard”.
+
+STRICT OUTPUT: Only provide the complete HTML document (<!doctype html> … </html>) with embedded <style> and <script>. No external libraries, no extra commentary.
+
+GOAL
+- A clean, accessible dashboard to browse categorized emails, show category counts, and display FAQs.
+
+DATA INPUTS (provided by the hosting page/app; design graceful fallbacks):
+- `list_emails` (optional): a function that returns an Array OR a Promise<Array> of email objects.
+- `window.emails` (optional): Array of email objects if `list_emails` is not available.
+- `window.category_counts` (optional): Dict with keys like "HR", "Important". If missing, compute counts from emails.
+- `window.faqs` (optional): Array of { q: string, a: string }. If missing, show 3 sensible examples.
+
+EMAIL SHAPE (assume keys exist; handle missing with safe defaults):
+{
+  id: number|string,
+  from: string,
+  to: string,
+  subject: string,
+  body: string,
+  category: string,          // e.g., "HR", "IT", "Finance", "Important"
+  received_date: string      // e.g., "2025-08-25 09:12"
+}
+
+PAGE REQUIREMENTS
+1) Header
+   - Title text: "Email Categorization Dashboard"
+
+2) LEFT COLUMN
+   - Three small “count cards” labeled exactly:
+     • "HR Emails" → value from category_counts.HR (or computed)
+     • "Important Emails" → value from category_counts.Important (or computed)
+     • "FAQ Topics" → number of items in `faqs`
+   - Expandable FAQ section:
+     • Render from `faqs` array/dict using <details>/<summary>
+     • Show at least 3 examples if none provided
+
+3) RIGHT COLUMN
+   - Search input (type=search) to filter emails by subject or sender (`from`)
+     • Case-insensitive, updates on input (with a small debounce ~150ms)
+     • “Clear” button to reset search
+   - Email list table with columns: Sender | Subject | Category
+     • Clicking a row shows email details in a preview pane below
+   - Preview pane shows:
+     • Meta line: “from → to • received_date”
+     • Subject + a colored badge for category
+     • Body in a scrollable <pre>
+   - On initial load, if there are any emails, auto-select the first email to show its preview
+
+DATA LOADING LOGIC
+- If `typeof list_emails === "function"`:
+    • Try `await list_emails()` (handle both sync and async).
+  Else if `Array.isArray(window.emails)`:
+    • Use `window.emails`.
+  Else:
+    • Provide a small inline fallback array (2–4 items) so the page still renders.
+
+CATEGORY COUNTS
+- If `window.category_counts` is present, use it to populate “HR Emails” and “Important Emails”.
+- Otherwise, compute counts from the current emails array by matching category (case-insensitive).
+
+FAQS
+- If `window.faqs` is present, render it.
+- Otherwise, render three example Q&A pairs (e.g., categorization rules, search behavior, preview usage).
+
+STYLE & ACCESSIBILITY
+- Simple, modern CSS (no frameworks). Use CSS variables for colors.
+- Responsive 2-column layout; collapses to 1 column on narrow screens.
+- Sticky table header. Hover highlight on rows.
+- Clear visual badge colors for categories (e.g., green for HR, red for Important, neutral for others).
+- Use semantic HTML: <header>, <main>, <section>, <article>, etc.
+- Add basic ARIA where it helps (e.g., aria-live on the preview container).
+
+JAVASCRIPT BEHAVIOR
+- Functions to implement:
+  • loadData(): resolve emails, counts, faqs using the rules above
+  • renderCounts(category_counts, faqs)
+  • renderFaqs(faqs)
+  • renderTable(emails) and showPreview(email)
+  • applyFilter(query): filters by subject or sender; preserves selection if still visible
+- Keep the state in JS (current emails array, filtered view, selected email).
+- No external network calls; only use the provided data/functions.
+- Don’t throw on missing fields—guard with defaults.
+
+VALIDATION
+- After codegen, page should load and function using only the inline fallback data.
+- Search must filter instantly and update the table + preview.
+- Counts must reflect either provided `category_counts` or computed values.
+- FAQs must render from data or fallback examples.
+
+Only output the single complete HTML file as requested.
+*/
