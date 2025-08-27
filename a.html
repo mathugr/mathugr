@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Email Categorization Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --hr: #16a34a;         /* green for HR */
+      --important: #ef4444;  /* red for Important */
+      --badge: #111827;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol"; background: var(--bg); color: var(--text); }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky; top: 0; z-index: 5;
+    }
+    header h1 { margin: 0; font-size: 1.25rem; letter-spacing: .3px; }
+
+    main { display: grid; grid-template-columns: 340px 1fr; gap: 16px; padding: 16px; align-items: start; }
+    @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+
+    /* Left column */
+    .left { display: grid; gap: 16px; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 360px) { .cards { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+    }
+    .card h3 { margin: 0 0 6px; font-size: .85rem; color: var(--muted); font-weight: 600; }
+    .card .num { font-size: 1.6rem; font-weight: 700; }
+
+    .faq { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+    .faq h2 { margin: 0 0 8px; font-size: 1rem; }
+    details { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; background: #fafafa; }
+    details + details { margin-top: 8px; }
+    summary { cursor: pointer; font-weight: 600; }
+    .answer { color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+    /* Right column */
+    .right { display: grid; gap: 12px; }
+    .search {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex; gap: 10px;
+    }
+    .search input {
+      width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border);
+      outline: none;
+    }
+    .search button {
+      padding: 10px 14px; border: 1px solid var(--border); background: #fff; border-radius: 8px; cursor: pointer;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .panel h2 { margin: 0; padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 1rem; }
+    .table-wrap { overflow: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      text-align: left; font-size: .85rem; color: var(--muted);
+      background: #fafafa; border-bottom: 1px solid var(--border); padding: 10px 12px; position: sticky; top: 0; z-index: 1;
+    }
+    tbody td { border-bottom: 1px solid var(--border); padding: 10px 12px; }
+    tbody tr { cursor: pointer; }
+    tbody tr:hover { background: #f9fafb; }
+    .badge {
+      display: inline-block; font-size: .75rem; padding: 2px 8px; border-radius: 999px; color: #fff; background: var(--badge); font-weight: 600;
+    }
+    .badge.hr { background: var(--hr); }
+    .badge.important { background: var(--important); }
+    .preview {
+      border-top: 1px solid var(--border); padding: 12px 14px; background: #fff;
+    }
+    .preview .meta { color: var(--muted); font-size: .9rem; margin-bottom: 6px; }
+    .preview h3 { margin: 6px 0 8px; font-size: 1.05rem; }
+    .preview pre {
+      white-space: pre-wrap; word-wrap: break-word; margin: 0; background: #fafafa; border: 1px solid var(--border); padding: 12px; border-radius: 8px;
+      max-height: 280px; overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Email Categorization Dashboard</h1>
+  </header>
+
+  <main>
+    <!-- LEFT COLUMN -->
+    <section class="left" aria-label="Sidebar">
+      <div class="cards" aria-label="Category Counts">
+        <div class="card">
+          <h3>HR Emails</h3>
+          <div class="num" id="hr-count">0</div>
+        </div>
+        <div class="card">
+          <h3>Important Emails</h3>
+          <div class="num" id="important-count">0</div>
+        </div>
+        <div class="card">
+          <h3>FAQ Topics</h3>
+          <div class="num" id="faq-count">0</div>
+        </div>
+      </div>
+
+      <article class="faq" aria-label="FAQs">
+        <h2>FAQ</h2>
+        <div id="faq-list"></div>
+      </article>
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <section class="right" aria-label="Main Content">
+      <div class="search" role="search">
+        <input id="search" type="search" placeholder="Search by subject or sender…" aria-label="Search emails" />
+        <button id="clear">Clear</button>
+      </div>
+
+      <section class="panel" aria-label="Email List">
+        <h2>Emails</h2>
+        <div class="table-wrap">
+          <table id="email-table">
+            <thead>
+              <tr>
+                <th style="width: 28%">Sender</th>
+                <th>Subject</th>
+                <th style="width: 16%">Category</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="preview" id="preview" aria-live="polite" aria-atomic="true">
+          <div class="meta">Select an email to preview details.</div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      // --- Data bootstrap ---
+      // Expect these to be injected by backend if available.
+      // Fallback demo data will be used otherwise.
+      const emails = (window.emails) || [
+        { id: 1, from: "hr@corp", to: "you@corp", subject: "Offer approval", category: "HR", body: "Please approve candidate offer.", received_date: "2025-08-25 09:12" },
+        { id: 2, from: "finance@corp", to: "you@corp", subject: "Invoice Q3 Review", category: "Important", body: "Invoice attached; need approval by EOW.", received_date: "2025-08-24 16:05" },
+        { id: 3, from: "it@corp", to: "you@corp", subject: "VPN Token Rotation", category: "IT", body: "Tokens rotate Friday 6 PM. Expect brief downtime.", received_date: "2025-08-23 11:30" },
+        { id: 4, from: "security@corp", to: "you@corp", subject: "Policy Update", category: "Important", body: "New password policy effective next week.", received_date: "2025-08-22 10:20" }
+      ];
+
+      const category_counts = (window.category_counts) || {
+        HR: emails.filter(e => (e.category || '').toLowerCase() === 'hr').length,
+        Important: emails.filter(e => (e.category || '').toLowerCase() === 'important').length
+      };
+
+      const faqs = (window.faqs) || [
+        { q: "How are emails categorized?", a: "A lightweight ML classifier assigns categories like HR, IT, Finance, or Important based on subject and body." },
+        { q: "Can I search by sender?", a: "Yes. Use the search box to filter by sender or subject; results update instantly." },
+        { q: "How do I see full details?", a: "Click any row in the table to open the preview pane with sender, subject, date, and full body." }
+      ];
+
+      // --- DOM refs ---
+      const hrCount = document.getElementById("hr-count");
+      const importantCount = document.getElementById("important-count");
+      const faqCount = document.getElementById("faq-count");
+      const faqList = document.getElementById("faq-list");
+      const tbody = document.querySelector("#email-table tbody");
+      const preview = document.getElementById("preview");
+      const search = document.getElementById("search");
+      const clearBtn = document.getElementById("clear");
+
+      // --- Render counts from category_counts dict ---
+      function setCounts() {
+        const get = (obj, key) => {
+          const k = Object.keys(obj).find(k => k.toLowerCase() === key.toLowerCase());
+          return k ? obj[k] : 0;
+        };
+        hrCount.textContent = get(category_counts, "HR");
+        importantCount.textContent = get(category_counts, "Important");
+        faqCount.textContent = Array.isArray(faqs) ? faqs.length : 0;
+      }
+
+      // --- Render FAQs from faqs dict/array ---
+      function renderFaqs() {
+        faqList.innerHTML = "";
+        (faqs || []).forEach(item => {
+          const d = document.createElement("details");
+          const s = document.createElement("summary");
+          s.textContent = item.q || "";
+          const a = document.createElement("div");
+          a.className = "answer";
+          a.textContent = item.a || "";
+          d.appendChild(s);
+          d.appendChild(a);
+          faqList.appendChild(d);
+        });
+      }
+
+      // --- Table + preview rendering ---
+      let filtered = emails.slice();
+
+      function badgeClass(cat) {
+        const c = (cat || "").toLowerCase();
+        if (c === "hr") return "badge hr";
+        if (c === "important") return "badge important";
+        return "badge";
+        }
+
+      function renderTable(rows) {
+        tbody.innerHTML = "";
+        rows.forEach((e, idx) => {
+          const tr = document.createElement("tr");
+          tr.dataset.id = e.id ?? idx + 1;
+
+          const tdFrom = document.createElement("td");
+          tdFrom.textContent = e.from || "";
+
+          const tdSubject = document.createElement("td");
+          tdSubject.textContent = e.subject || "";
+
+          const tdCat = document.createElement("td");
+          const span = document.createElement("span");
+          span.className = badgeClass(e.category);
+          span.textContent = e.category || "—";
+          tdCat.appendChild(span);
+
+          tr.appendChild(tdFrom);
+          tr.appendChild(tdSubject);
+          tr.appendChild(tdCat);
+
+          tr.addEventListener("click", () => showPreview(e));
+          tbody.appendChild(tr);
+        });
+
+        // Reset preview if no rows
+        if (!rows.length) {
+          preview.innerHTML = `<div class="meta">No emails match your search.</div>`;
+        }
+      }
+
+      function showPreview(e) {
+        preview.innerHTML = "";
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = `${e.from || ""} → ${e.to || ""} • ${e.received_date || ""}`;
+
+        const title = document.createElement("h3");
+        title.textContent = e.subject || "(No subject)";
+
+        const badge = document.createElement("span");
+        badge.className = badgeClass(e.category);
+        badge.style.marginLeft = "8px";
+        badge.textContent = e.category || "—";
+        title.appendChild(badge);
+
+        const body = document.createElement("pre");
+        body.textContent = e.body || "";
+
+        preview.appendChild(meta);
+        preview.appendChild(title);
+        preview.appendChild(body);
+      }
+
+      // --- Search filtering ---
+      function applyFilter() {
+        const q = (search.value || "").trim().toLowerCase();
+        if (!q) {
+          filtered = emails.slice();
+        } else {
+          filtered = emails.filter(e =>
+            (e.subject || "").toLowerCase().includes(q) ||
+            (e.from || "").toLowerCase().includes(q)
+          );
+        }
+        renderTable(filtered);
+      }
+
+      // --- Wiring ---
+      search.addEventListener("input", applyFilter);
+      clearBtn.addEventListener("click", () => { search.value = ""; applyFilter(); });
+
+      // --- Initial render ---
+      setCounts();
+      renderFaqs();
+      renderTable(filtered);
+      if (filtered.length) showPreview(filtered[0]);
+    })();
+  </script>
+</body>
+</html>
