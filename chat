@@ -1,3 +1,19 @@
+The Email Pilot is built around four intelligent panels that work seamlessly together:
+
+First, we give users the power to ask natural language questions—things like “Show all HR emails”, or “Send approvals from last week.” The system understands intent and gets right to work. No training needed.
+
+Second, every interaction is captured in a central chat history—a live, auditable feed of what’s been asked, answered, and acted upon. It’s transparency and traceability—built in.
+
+On the right panel, users get a live category dashboard—not just what emails exist, but how many fall under Appreciation, Alerts, Business, and more.
+And right below that? A curated Tips & Tricks section that turns everyday users into power users, offering instant shortcuts for sending summaries or applying response templates.
+
+And here’s where it gets exciting:
+When users select a category like Appreciation, we don’t just display the emails—we let them instantly generate a response using friendly, empathetic, or business-tone templates. They can edit, personalize, and hit send. It’s fast. It’s intelligent. And it's fully logged in the history.
+
+In under 60 seconds, we go from cluttered inbox to categorized insights, templated responses, and documented actions.
+
+This is not just email sorting—it’s a smart communication assistant built for the enterprise. And this is just the beginning.
+
 Chat.html
 /*
 You are GitHub Copilot. Generate ONE self-contained HTML file (inline CSS + vanilla JS) for an “Email Categorization Dashboard”.
