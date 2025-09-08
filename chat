@@ -1,18 +1,38 @@
-The Email Pilot is built around four intelligent panels that work seamlessly together:
+At its core, the solution is structured around four integrated panels, each designed to optimize productivity and reduce manual overhead:
 
-First, we give users the power to ask natural language questions—things like “Show all HR emails”, or “Send approvals from last week.” The system understands intent and gets right to work. No training needed.
+✅ 1. Ask-a-Question Panel (Left Panel)
 
-Second, every interaction is captured in a central chat history—a live, auditable feed of what’s been asked, answered, and acted upon. It’s transparency and traceability—built in.
+Natural language interface: users can ask things like
+“Show appreciation emails,” or
+“Send items 2 and 3 as approved.”
 
-On the right panel, users get a live category dashboard—not just what emails exist, but how many fall under Appreciation, Alerts, Business, and more.
-And right below that? A curated Tips & Tricks section that turns everyday users into power users, offering instant shortcuts for sending summaries or applying response templates.
+Automatically interprets user intent — whether it's a query, command, or action.
 
-And here’s where it gets exciting:
-When users select a category like Appreciation, we don’t just display the emails—we let them instantly generate a response using friendly, empathetic, or business-tone templates. They can edit, personalize, and hit send. It’s fast. It’s intelligent. And it's fully logged in the history.
+Eliminates the need for menus or filters — just ask, and it responds.
 
-In under 60 seconds, we go from cluttered inbox to categorized insights, templated responses, and documented actions.
+✅ 2. Chat History Panel (Center Panel)
 
-This is not just email sorting—it’s a smart communication assistant built for the enterprise. And this is just the beginning.
+Real-time log of all interactions, questions, system responses, and user actions.
+
+Serves as a contextual timeline and an auditable activity trail.
+
+Enables seamless follow-up without losing track of prior conversations.
+
+✅ 3. Insights & Actions Panel (Right Panel)
+
+Displays live category counts (e.g., HR, Business, Appreciation).
+
+Offers Tips & Tricks for advanced actions like batch-sending, summarizing, or retrieving data.
+
+Includes quick action buttons to immediately act on retrieved results.
+
+✅ 4. Smart Template & Reply Panel (Bottom or Contextual Panel)
+
+When a category like “Appreciation” is selected, matching emails are shown.
+
+Users can choose from tone-specific templates: Friendly, Empathetic, Business, or General.
+
+Templates are fully editable before sending, and every message is logged back in the chat history.
 
 Chat.html
 /*
